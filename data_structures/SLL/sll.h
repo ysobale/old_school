@@ -38,6 +38,10 @@ public:
 
 	void reverse_alternate();
 
+	void merge_alternate(SLL other) ;
+
+	void  find_middle() ;
+
 };
 
 

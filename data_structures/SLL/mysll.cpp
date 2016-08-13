@@ -61,9 +61,6 @@ void SLL :: reverse_pointer_method (){
     head = p;
 }
 
-
-
-
 void SLL :: reverse_recursion_method (){
     
     if (!head) {
@@ -119,45 +116,81 @@ void SLL :: reverse_alternate() {
     }
     p = NULL;
     q = head ;
-
-    head = head->next;
-    
+    head = head->next;    
     r = q->next;
-
-    while(q && r) {
-        
+    while(q && r) {       
         q->next = r->next ;
         r->next = q;
-
         if(p) {
             p->next = r;
         }
         p = q;
-
         q = p->next;
-
         if (q) {
             r = q->next;
-        }
+        } 
+    }
+}
 
-        //display();    
+
+void  SLL :: merge_alternate(SLL other) {
+    NPTR first, second, firstnext, secondnext;
+
+    first = this->head;
+    second = other.head;
+
+    while (first && second) {
+        firstnext = first->next;
+        secondnext = second->next;
+
+        first->next = second;
+        second->next = firstnext;
+
+        first =firstnext;
+        second = secondnext;
     }
 
-
 }
+
+
+void  SLL :: find_middle() {
+    NPTR slow, fast;
+
+    fast = head;
+    slow = fast;
+
+    while (fast && fast->next) {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+
+    printf("Middle = %d\n", slow->val);
+}
+
+
 
 
 int main() {
 
     // declare sll
     SLL s;
+/*
+    s.append(1);
+    s.append(3);
+    s.append(5);
+    s.append(7);
+    s.append(9);
 
-    s.add(23);
-    s.add(423);
-    s.add(623);
-    s.append(56);
-    s.append(87);
-/*    s.display();
+    SLL o;
+    o.append(2);
+    o.append(4);
+    o.append(6);
+    o.append(8);
+    o.append(10);
+    o.append(12);
+
+
+   s.display();
     s.reverse_recursion_method();
     s.display();
     s.delete_node(87);
@@ -167,22 +200,26 @@ int main() {
     s.delete_node(23);
     s.display();
 
-
+*/
     for (int i=1 ; i <= 50 ; i++) {
         s.add(i);
     }
-*/    
+    
+    s.display();
+    //o.display();
+
+    //s.merge_alternate(o);
+
+    s.reverse_recursion_method();
+
+
     s.display();
 
-    //s.reverse_recursion_method();
+
+    s.find_middle();
+    //s.reverse_alternate();
 
 
-    s.display();
-
-    s.reverse_alternate();
-
-
-    s.display();
 
     return 0;
 }
