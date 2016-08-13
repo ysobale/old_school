@@ -64,6 +64,7 @@ void SLL :: reverse_pointer_method (){
 
 int main() {
 
+    // declare sll
     SLL s;
 
     s.add(23);
