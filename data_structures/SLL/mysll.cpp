@@ -107,6 +107,38 @@ NPTR reverse(NPTR h) {
     return newh;
 }
 
+void  SLL :: reverse_k_node (int k) {
+    head = _reverse_k_node (head, k);   
+}
+
+NPTR  _reverse_k_node (NPTR _head, int k)
+{
+    NPTR current = _head;
+    NPTR next = NULL;
+    NPTR prev = NULL;
+    int count = 0;   
+     
+    /*reverse first k nodes of the linked list */
+    while (current != NULL && count < k)
+    {
+        next  = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+        count++;
+    }
+     
+    /* next is now a pointer to (k+1)th node 
+       Recursively call for the list starting from current.
+       And make rest of the list as next of first node */
+    if (next !=  NULL)
+       _head->next = _reverse_k_node(next, k); 
+ 
+    /* prev is new head of the input list */
+    return prev;
+}
+
+
 
 int SLL :: delete_node(int _val) {
     NPTR t = head;
@@ -191,39 +223,6 @@ void  SLL :: find_middle() {
 }
 
 
-void SLL :: reverse_k_node(int _k){
-    NPTR p, q ,r ;
-    if (!head) {
-        return ;
-    }
-
-    int i = 0;
-
-    p = head ;
-
-    while (1) {
-        q = p;
-
-        while(q && i< _k) {
-            r = q->next;
-            p->next = q;
-            i++;
-        }
-
-    }
-
-    p = head ;
-    q = p->next;
-    p->next = NULL;
-    while(q) {
-        r = q->next;
-        q->next = p;
-        p = q;
-        q = r;
-    }
-    head = p;
-}
-
 
 
 
@@ -260,8 +259,8 @@ int main() {
     s.display();
 
 */
-    for (int i=1 ; i <= 4 ; i++) {
-        s.add(i);
+    for (int i=1 ; i <= 10 ; i++) {
+        s.append(i);
     }
     
     s.display();
@@ -269,7 +268,7 @@ int main() {
 
     //s.merge_alternate(o);
 
-    s.reverse_newh_method();
+    s.reverse_k_node(3);
 
 
     s.display();

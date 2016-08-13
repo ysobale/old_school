@@ -48,5 +48,5 @@ public:
 
 };
 
-
+NPTR  _reverse_k_node (NPTR _head, int k);
 NPTR reverse(NPTR h) ;
