@@ -61,6 +61,29 @@ void SLL :: reverse_pointer_method (){
     head = p;
 }
 
+void SLL :: reverse_newh_method (){
+    NPTR p, q ;
+    if (!head) {
+        return ;
+    }
+    p = head;
+    head = NULL;
+
+    while (p) {
+        q = p;
+        p = p->next;
+        
+        if(!head) {
+            head = q ;
+            q->next = NULL;
+        } else {
+            q->next = head;
+            head = q;
+        }
+    }
+
+}
+
 void SLL :: reverse_recursion_method (){
     
     if (!head) {
@@ -168,6 +191,42 @@ void  SLL :: find_middle() {
 }
 
 
+void SLL :: reverse_k_node(int _k){
+    NPTR p, q ,r ;
+    if (!head) {
+        return ;
+    }
+
+    int i = 0;
+
+    p = head ;
+
+    while (1) {
+        q = p;
+
+        while(q && i< _k) {
+            r = q->next;
+            p->next = q;
+            i++;
+        }
+
+    }
+
+    p = head ;
+    q = p->next;
+    p->next = NULL;
+    while(q) {
+        r = q->next;
+        q->next = p;
+        p = q;
+        q = r;
+    }
+    head = p;
+}
+
+
+
+
 
 
 int main() {
@@ -201,7 +260,7 @@ int main() {
     s.display();
 
 */
-    for (int i=1 ; i <= 50 ; i++) {
+    for (int i=1 ; i <= 4 ; i++) {
         s.add(i);
     }
     
@@ -210,13 +269,13 @@ int main() {
 
     //s.merge_alternate(o);
 
-    s.reverse_recursion_method();
+    s.reverse_newh_method();
 
 
     s.display();
 
 
-    s.find_middle();
+    //s.find_middle();
     //s.reverse_alternate();
 
 

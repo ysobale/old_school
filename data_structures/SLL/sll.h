@@ -32,6 +32,8 @@ public:
 
 	void reverse_pointer_method();
 
+	void reverse_newh_method();
+
 	void reverse_recursion_method();
 
 	int delete_node(int val);
@@ -39,6 +41,8 @@ public:
 	void reverse_alternate();
 
 	void merge_alternate(SLL other) ;
+
+	void reverse_k_node(int _k);
 
 	void  find_middle() ;
 
