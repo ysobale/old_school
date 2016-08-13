@@ -32,4 +32,13 @@ public:
 
 	void reverse_pointer_method();
 
+	void reverse_recursion_method();
+
+	int delete_node(int val);
+
+	void reverse_alternate();
+
 };
+
+
+NPTR reverse(NPTR h) ;
